@@ -1,11 +1,14 @@
 import "./globals.css";
 
-import Footer from "@/components/Home-Components/Footer";
-import Header from "@/components/Home-Components/Header";
-import { Inter } from "next/font/google";
+import Footer from "@/components/Shared-components/Footer";
+import Header from "@/components/Shared-components/Header";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./../themes/theme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { work_Sans } from "@/fonts";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Create Next App",
@@ -15,11 +18,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={work_Sans.className}>
         <ReactQueryProvider>
-          <Header />
-          {children}
-          <Footer />
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Header />
+            {children}
+            <Footer />
+          </ThemeProvider>
         </ReactQueryProvider>
       </body>
     </html>
